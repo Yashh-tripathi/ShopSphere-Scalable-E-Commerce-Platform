@@ -16,8 +16,11 @@ app.use(express.json({limit: "40kb"}));
 app.use(express.urlencoded({extended: true}));
 
 
-app.get("/", (_req, res) => {
-    res.send("API running...")
-  });
+//routes;
+import authRoutes from "./routes/auth.routes";
+import testRoutes from  "./routes/test.routes";
+
+app.use("/api/auth", authRoutes);
+app.use("/api/test", testRoutes)
 
 export default app;
