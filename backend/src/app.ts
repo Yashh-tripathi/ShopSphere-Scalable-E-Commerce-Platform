@@ -19,8 +19,10 @@ app.use(express.urlencoded({extended: true}));
 //routes;
 import authRoutes from "./routes/auth.routes";
 import testRoutes from  "./routes/test.routes";
+import productRoutes from "./routes/product.routes";
 
 app.use("/api/auth", authRoutes);
-app.use("/api/test", testRoutes)
+app.use("/api/test", testRoutes);
+app.use("/api/products", productRoutes);
 
 export default app;
