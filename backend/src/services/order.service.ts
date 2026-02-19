@@ -4,8 +4,10 @@ import { Cart } from "../models/cart.model";
 import { Product } from "../models/product.model";
 
 export const placeOrder = async (userId: string) => {
-    console.log(userId);
-    const cart = await Cart.findOne({user: new mongoose.Types.ObjectId(userId)}).populate("items.product");
+    console.log(typeof( userId));
+    const cart = await Cart.findOne({user: new mongoose.Types.ObjectId(userId)}).populate({
+        path: "items.product"
+      });
     if(!cart || cart.items.length === 0){
         throw new Error("Cart is empty");
     }

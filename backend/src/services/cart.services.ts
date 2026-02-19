@@ -6,7 +6,7 @@ export const addToCart = async (userId: string, productId: any) => {
 
   if (!cart) {
     cart = await Cart.create({
-      user: userId,
+      user: new mongoose.Types.ObjectId(userId),
       items: [{ product: productId, quantity: 1 }]
     })
     return cart

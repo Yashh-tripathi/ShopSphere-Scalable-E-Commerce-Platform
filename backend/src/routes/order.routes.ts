@@ -11,8 +11,8 @@ router.route("/my").get(protect, controller.getMyOrders);
 
 
 //admin only 
-router.route("/").post(protect, adminOnly, controller.getALlOrders);
-router.route("/:id").put(protect, adminOnly, controller.updateOrderStatus);
+router.route("/all").get(protect, adminOnly, controller.getALlOrders);
+router.route("/update/:id").put(protect, adminOnly, controller.updateOrderStatus);
 
 
 export default router;
