@@ -1,0 +1,38 @@
+import { addToCart } from "@/api/cart.api";
+import { useCartStore } from "@/store/cart.store";
+
+interface Product {
+    _id: string
+    title: string
+    description: string
+    price: number 
+    category: string
+}
+
+const ProductCard = ({product} : {product: Product}) => {
+    const { triggerRefresh } = useCartStore();
+
+    const handleAddToCart = async () => {
+        await addToCart(product._id);
+        triggerRefresh();
+        alert("added to cart");
+    }
+
+
+    return (
+        <div className="bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+      <h2 className="text-xl font-bold">{product.title}</h2>
+      <p className="text-gray-500">{product.description}</p>
+      <p className="text-indigo-500 font-semibold mt-2">₹{product.price}</p>
+
+      <button
+        onClick={handleAddToCart}
+        className="mt-3 w-full bg-indigo-500 text-white py-1 rounded hover:bg-indigo-600"
+      >
+        Add to Cart
+      </button>
+    </div>
+    );
+}
+
+export default ProductCard
