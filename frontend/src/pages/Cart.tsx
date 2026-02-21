@@ -12,6 +12,8 @@ const Cart = () => {
     const token = useAuthStore((s) => s.token);
     const refresh = useCartStore((s) => s.refresh);
     const triggerRefresh = useCartStore((s) => s.triggerRefresh);
+    const setCount = useCartStore((s) => s.setCount);
+
 
     const handlePlaceOrder = async () => {
         await placeOrder();
@@ -31,8 +33,9 @@ const Cart = () => {
       
         const fetchCart = async () => {
           try {
-            const data = await getCart()
-            setCart(data)
+            const data = await getCart();
+            setCart(data);
+            setCount(data.items.length)
           } catch {
             setCart({ items: [] })
           }

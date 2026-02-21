@@ -1,18 +1,27 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { getProducts } from "../api/product.api"
 import { useProductStore } from "../store/product.store"
 import ProductCard from "@/components/ProductCard"
 
 const Home = () => {
-  const { products, setProducts } = useProductStore()
+  const { products, setProducts } = useProductStore();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await getProducts()
-      setProducts(res || [])
+      try{
+        const res = await getProducts()
+        setProducts(res || [])
+      }finally{
+        setLoading(false)
+      }
     }
     fetchProducts()
-  }, [])
+  }, []);
+
+  if(loading){
+    return <p className="p-6">Loading products...</p>
+  }
 
   return (
     <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
