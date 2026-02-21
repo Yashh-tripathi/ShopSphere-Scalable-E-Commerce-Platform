@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useAuthStore } from "../store/auth.store";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/auth.api";
@@ -11,7 +11,14 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const setToken = useAuthStore((s) => s.setToken);
     const navigate = useNavigate();
-
+    const token = useAuthStore((s) => s.token)
+    
+    useEffect(() => {
+      if (token) {
+        navigate("/")
+      }
+    }, [token])
+    
     const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
         try {
