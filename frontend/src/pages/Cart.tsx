@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { deleteCart, getCart } from "@/api/cart.api"
 import { useAuthStore } from "@/store/auth.store";
 import { useCartStore } from "../store/cart.store"
+import { placeOrder } from "@/api/order.api";
+import toast from "react-hot-toast";
 
 
 const Cart = () => {
@@ -9,7 +11,13 @@ const Cart = () => {
     const [cart, setCart] = useState<any>(null);
     const token = useAuthStore((s) => s.token);
     const refresh = useCartStore((s) => s.refresh);
-    const triggerRefresh = useCartStore((s) => s.triggerRefresh)
+    const triggerRefresh = useCartStore((s) => s.triggerRefresh);
+
+    const handlePlaceOrder = async () => {
+        await placeOrder();
+        triggerRefresh();
+        toast.success(("Order placed successfully"));
+    }
 
 
     const handleDelete = async (item:any) => {
@@ -62,6 +70,11 @@ const Cart = () => {
           </div>
         ))
       )}
+
+      <button
+        onClick={handlePlaceOrder}
+        className="bg-indigo-600 text-white px-4 py-2 rounded mt-4 hover:bg-indigo-700 cursor-pointer"
+      >Place Order</button>
     </div>
   );
 }

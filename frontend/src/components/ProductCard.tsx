@@ -1,6 +1,8 @@
 import { addToCart } from "@/api/cart.api";
 import { useAuthStore } from "@/store/auth.store";
 import { useCartStore } from "@/store/cart.store";
+import toast from "react-hot-toast"
+
 
 interface Product {
     _id: string
@@ -17,7 +19,7 @@ const ProductCard = ({product} : {product: Product}) => {
 
     const handleAddToCart = async () => {
       if (!token) {
-        alert("Please login first")
+        toast.error("Please login first")
         return
       }
     
@@ -25,9 +27,9 @@ const ProductCard = ({product} : {product: Product}) => {
         console.log(product._id)
         await addToCart(product._id)
         triggerRefresh() 
-        alert("Added to cart")
+        toast.success("Added to cart")
       } catch {
-        alert("Already in cart")
+        toast.error("Already in cart")
       }
     }
     

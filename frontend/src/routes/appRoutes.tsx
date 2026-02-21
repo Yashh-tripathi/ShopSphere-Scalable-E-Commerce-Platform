@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Cart from "@/pages/Cart";
 import ProtectedRoute from "./ProtectedRoutes";
+import Orders from "@/pages/Orders";
 
 const AppRoutes = () => {
     return (
@@ -13,13 +14,28 @@ const AppRoutes = () => {
                         <Home/>
                     </ProtectedRoute>
                 } />
+
                 <Route path="/login" element={<Login/>} />
+                
                 <Route path="/cart" element={
                     <ProtectedRoute>
                         <Cart/>
                     </ProtectedRoute>
                 } />
+
+                <Route
+                path="/orders"
+                element={
+                    <ProtectedRoute>
+                    <Orders />
+                    </ProtectedRoute>
+                }
+                />
+
+                
             </Routes>
+
+            
     )
 }
 

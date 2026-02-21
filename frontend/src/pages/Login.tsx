@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/auth.api";
 import { CardContainer } from "@/components/ui/3d-card";
 import { NoiseBackground } from "@/components/ui/noise-background";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const Login = () => {
             setToken(data.token);
                 navigate("/")
         } catch (error) {
-            alert("Invalid credentials")
+            toast.error("Invalid credentials");
         }
     }
 

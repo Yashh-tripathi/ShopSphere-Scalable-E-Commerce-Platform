@@ -1,6 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import AppRoutes from './routes/appRoutes'
+import AppRoutes from './routes/appRoutes';
+import {Toaster} from "react-hot-toast";
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <AppRoutes/>
+      <Toaster position="bottom-left" />
     </BrowserRouter>
     </>
   );

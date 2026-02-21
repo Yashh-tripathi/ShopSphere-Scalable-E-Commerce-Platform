@@ -14,6 +14,9 @@ const Navbar = () => {
         <Link to="/cart" className="hover:text-indigo-600">
           Cart
         </Link>
+        <Link to="/orders" className="hover:text-indigo-600">
+          Orders
+        </Link>
 
         <button
           onClick={() => {
