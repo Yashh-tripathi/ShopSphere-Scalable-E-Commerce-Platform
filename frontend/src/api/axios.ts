@@ -5,11 +5,15 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token")
+    const stored = localStorage.getItem("auth-storage")
   
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-  
-    return config
+    if (stored) {
+        const token = JSON.parse(stored)?.state?.token
+    
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`
+        }
+      }
+    
+      return config
   });

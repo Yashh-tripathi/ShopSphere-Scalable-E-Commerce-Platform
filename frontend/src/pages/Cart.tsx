@@ -1,17 +1,38 @@
 import { useEffect, useState } from "react"
-import { getCart } from "@/api/cart.api"
+import { deleteCart, getCart } from "@/api/cart.api"
+import { useAuthStore } from "@/store/auth.store";
+import { useCartStore } from "../store/cart.store"
+
 
 const Cart = () => {
 
     const [cart, setCart] = useState<any>(null);
-    
+    const token = useAuthStore((s) => s.token);
+    const refresh = useCartStore((s) => s.refresh);
+    const triggerRefresh = useCartStore((s) => s.triggerRefresh)
+
+
+    const handleDelete = async (item:any) => {
+        await deleteCart(item.product._id);
+        triggerRefresh();
+    }
+
+
     useEffect(() => {
+        if (!token) return
+      
         const fetchCart = async () => {
-            const data = await getCart();
-            setCart(data);
+          try {
+            const data = await getCart()
+            setCart(data)
+          } catch {
+            setCart({ items: [] })
+          }
         }
-        fetchCart();
-    }, [])
+      
+        fetchCart()
+      }, [token, refresh])
+      
 
 
   if (!cart) return <p className="p-6">Loading...</p>
@@ -26,13 +47,18 @@ const Cart = () => {
         cart.items.map((item: any) => (
           <div
             key={item.product._id}
-            className="bg-white shadow-md rounded-xl p-4 mb-4"
+            className="bg-gray-200 shadow-md rounded-xl p-4 mb-4"
           >
             <h3 className="font-bold">{item.product.title}</h3>
             <p>Qty: {item.quantity}</p>
             <p className="text-indigo-500">
               ₹{item.product.price * item.quantity}
             </p>
+            <button  
+                onClick={() => handleDelete(item)}
+                className="bg-red-500 p-1 rounded-md flex font-bold justify-end items-end cursor-pointer hover:bg-red-600 text-white/80">
+                    Delete
+            </button>
           </div>
         ))
       )}

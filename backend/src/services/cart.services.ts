@@ -15,7 +15,7 @@ export const addToCart = async (userId: string, productId: any) => {
   const item = cart.items.find(i => i.product.toString() === productId)
 
   if (item) {
-    item.quantity += 1
+    throw new Error("Already in cart")
   } else {
     cart.items.push({ product: productId, quantity: 1 })
   }

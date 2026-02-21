@@ -1,4 +1,5 @@
 import { addToCart } from "@/api/cart.api";
+import { useAuthStore } from "@/store/auth.store";
 import { useCartStore } from "@/store/cart.store";
 
 interface Product {
@@ -12,11 +13,24 @@ interface Product {
 const ProductCard = ({product} : {product: Product}) => {
     const { triggerRefresh } = useCartStore();
 
+    const token = useAuthStore((s) => s.token)
+
     const handleAddToCart = async () => {
-        await addToCart(product._id);
-        triggerRefresh();
-        alert("added to cart");
+      if (!token) {
+        alert("Please login first")
+        return
+      }
+    
+      try {
+        console.log(product._id)
+        await addToCart(product._id)
+        triggerRefresh() 
+        alert("Added to cart")
+      } catch {
+        alert("Already in cart")
+      }
     }
+    
 
 
     return (
