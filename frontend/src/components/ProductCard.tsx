@@ -36,14 +36,14 @@ const ProductCard = ({product} : {product: Product}) => {
 
 
     return (
-        <div className="bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
-      <h2 className="text-xl font-bold">{product.title}</h2>
+        <div className="bg-transparent  shadow-md rounded-xl p-4 hover:shadow-lg transition">
+      <h2 className="text-xl text-white font-bold">{product.title}</h2>
       <p className="text-gray-500">{product.description}</p>
       <p className="text-indigo-500 font-semibold mt-2">₹{product.price}</p>
 
       <button
         onClick={handleAddToCart}
-        className="mt-3 w-full bg-indigo-500 text-white py-1 rounded hover:bg-indigo-600"
+        className="mt-3 w-full bg-indigo-500 cursor-pointer text-white py-1 rounded hover:bg-indigo-600"
       >
         Add to Cart
       </button>

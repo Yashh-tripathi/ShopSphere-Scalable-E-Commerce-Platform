@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { getProducts, getProductsSearch } from "../api/product.api"
-import { useProductStore } from "../store/product.store"
+// import { useProductStore } from "../store/product.store"
 import ProductCard from "@/components/ProductCard"
+import { HoverEffect } from "@/components/ui/card-hover-effect"
 
 const Home = () => {
 //   const { products, setProducts } = useProductStore();
@@ -37,18 +38,27 @@ useEffect(() => {
 
   return (
     <>
+        <div className="flex w-full justify-center mt-5 ">
         <input
   placeholder="Search products..."
-  className="border p-2 rounded mb-4 w-full"
+  className="border-2 shadow-xl p-4  rounded-2xl  mb-4 w-125 justify-center border-black"
   value={search}
   onChange={(e) => setSearch(e.target.value)}
 />
+        </div>
     <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-  {products.map((p: any) => (
-    <ProductCard key={p._id} product={p} />
-  ))}
+      <HoverEffect
+  items={products.map((p: any) => ({
+    title: p.title,
+    description: p.description,
+    link: "#",
+    content: <ProductCard product={p} />
+  }))}
+  className="w-300"
+/>
+
 </div>
     </div>
     </>
