@@ -3,21 +3,27 @@ import { getMyOrders } from "@/api/order.api"
 
 const Orders = () => {
 
-    const [orders, setOrders] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
+  const [orders, setOrders] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-        const fetchOrder = async () => {
-            const data = await getMyOrders();
-            setOrders(data);
-            setLoading(false);
-        }
-        fetchOrder();
-    }, []);
-
-    if(loading){
-        return <p className="p-6">Loading Orders ...</p>
+  useEffect(() => {
+    const fetchOrder = async () => {
+      try {
+        const data = await getMyOrders()
+        setOrders(data || [])
+      } catch (err) {
+        console.log("Error fetching orders:", err)
+      } finally {
+        setLoading(false)
+      }
     }
+
+    fetchOrder()
+  }, [])
+
+  if (loading) {
+    return <p className="p-6">Loading Orders ...</p>
+  }
 
   return (
     <div className="p-6">
@@ -31,12 +37,13 @@ const Orders = () => {
             <p className="font-bold">Order ID: {order._id}</p>
             <p>Status: {order.status}</p>
 
-            {order.items.map((item: any) => (
-              <div key={item.product._id} className="ml-4 mt-2">
-                <p>{item.product.title}</p>
+            {order.items.map((item: any, idx: number) => (
+              <div key={item.product?._id || idx} className="ml-4 mt-2">
+                <p>{item.product?.title || "Product removed"}</p>
                 <p>Qty: {item.quantity}</p>
               </div>
             ))}
+
           </div>
         ))
       )}

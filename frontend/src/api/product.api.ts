@@ -8,5 +8,8 @@ export const getProducts  = async () => {
 export const getProductsSearch = async (search = "") => {
     const res = await api.get(`/products?search=${search}`)
     return res.data.products || []
-  }
-  
+}
+
+export const deleteProduct = async (id: string) => {
+    await api.delete(`/products/${id}`);
+}

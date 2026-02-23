@@ -6,7 +6,16 @@ export const placeOrder = async () => {
 }
 
 export const getMyOrders = async () => {
-    const res = await api.get("/orders/my");
+    const res = await api.get("/orders/my")
     return res.data;
 }
 
+export const getAllOrders = async () => {
+    const res = await api.get("/orders/all");
+    return res.data;
+}
+
+export const updateOrderStatus = async (id: string, status: string) => {
+    const res = await api.put(`/update/${id}`, {status});
+    return res.data;
+}

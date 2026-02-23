@@ -8,7 +8,6 @@ function App() {
   return (
     <>
     <BrowserRouter>
-      <Navbar/>
       <AppRoutes/>
       <Toaster position="bottom-left" />
     </BrowserRouter>

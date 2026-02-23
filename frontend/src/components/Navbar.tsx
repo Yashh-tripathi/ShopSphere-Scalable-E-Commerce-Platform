@@ -10,15 +10,15 @@ const Navbar = () => {
 
 
     return (
-        <div className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
-      <Link to="/" className="text-xl font-bold text-indigo-600">
+        <div className="navbar-root">
+      <Link to="/home" className="logo ">
         ShopSphere
       </Link>
 
-      <div className="flex gap-4 items-center">
+      <div className="links">
   {token ? (
     <>
-      <Link to="/cart" className="relative inline-flex items-center">
+      <Link to="/cart" className="links-items">
         Cart
         {count > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] px-1.5 rounded-full shadow">
@@ -27,14 +27,15 @@ const Navbar = () => {
         )}
       </Link>
 
-      <Link to="/orders">Orders</Link>
+      <Link to="/orders" className="links-items">Orders</Link>
+      <Link to="/admin-dashboard" className="links-items">Admins</Link>
 
       <button
         onClick={() => {
           logout()
           navigate("/login")
         }}
-        className="bg-red-500 text-white px-3 py-1 rounded"
+        className="btn"
       >
         Logout
       </button>
@@ -42,7 +43,7 @@ const Navbar = () => {
   ) : (
     <Link
       to="/register"
-      className="bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600"
+      className="btn"
     >
       Register
     </Link>

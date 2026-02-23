@@ -34,7 +34,7 @@ export const placeOrder = async (userId: string) => {
 }
 
 export const getUserOrders = async (userId: string) => {
-    return Order.find({user: userId}).populate("items.product");
+    return Order.find({user: userId}).populate("items.product").sort({createdAt: -1});
 }
 
 export const getAllOrders = async () => {

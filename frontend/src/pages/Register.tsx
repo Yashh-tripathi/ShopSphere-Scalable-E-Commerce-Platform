@@ -21,48 +21,50 @@ const Register = () => {
         }
     }
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#fdf7eb]">
+    <div className="">
+      <hr className="justify-center"/>
+      <div className="left-line"/>
+      <div className="right-line"/>
     <CardContainer>
-    <div className="bg-white border border-white  p-8 rounded-2xl shadow-xl w-96">
-      <h2 className="text-3xl font-bold text-center mb-6 text-black">
+    <div className="login">
+      <h2 className="text-lg font-semibold ">
         Register
       </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <label htmlFor="" className="text-sm font-bold ml-2">Name</label>
+      <form onSubmit={handleSubmit} className="space-y-4 login-form">
+        <label htmlFor="" className="label text-sm font-medium text-[#646464] ml-2">Name</label>
         <input
           type="text"
           placeholder="Name"
-          className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 ib"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <label htmlFor="" className="text-sm font-bold ml-2">Email</label>
+        <label htmlFor="" className=" label text-sm font-medium text-[#646464] ml-2">Email</label>
         <input
           type="email"
           placeholder="Email"
-          className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 ib"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="" className="text-sm font-bold ml-2">Password</label>
+        <label htmlFor="" className="label text-sm font-medium text-[#646464] ml-2">Password</label>
         <input
           type="password"
           placeholder="Password"
-          className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 ib"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
           type="submit"
-          className="w-full  bg-black text-white py-2 rounded-3xl p-2 cursor-pointer hover:bg-black/70"
+          className="btn logb w-full  bg-black text-white py-2 rounded-3xl p-2 cursor-pointer hover:bg-black/70"
           >
-        <NoiseBackground className="hover:cursor-pointer rounded-2xl">
             Register
-        </NoiseBackground>
+        
         </button>
-        <p>Already have an account? <span className="cursor-pointer text-blue-500" onClick={() => navigate("/login")}>login</span></p>
+        <p className="text-sm ">Already have an account? <span className="cursor-pointer text-blue-500" onClick={() => navigate("/login")}>login</span></p>
       </form>
     </div>
     </CardContainer>

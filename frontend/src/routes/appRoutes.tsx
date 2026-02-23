@@ -5,12 +5,22 @@ import Cart from "@/pages/Cart";
 import ProtectedRoute from "./ProtectedRoute";
 import Orders from "@/pages/Orders";
 import Register from "@/pages/Register";
+import AdminRoutes from "./AdminRoutes";
+import Admin from "@/pages/Admin";
+import MainLayout from "@/layouts/MainLayout";
+import FrontLayout from "@/layouts/FrontLayout";
+import Frontpage from "@/pages/Frontpage";
+import AdminLayout from "@/layouts/AdminLayout";
+import AdminProducts from "@/pages/admin/AdminProducts";
+import AdminOrders from "@/pages/admin/AdminOrders";
+import AdminHome from "@/pages/admin/AdminHome";
 
 const AppRoutes = () => {
     return (
         
             <Routes>
-                <Route path="/" element={
+                <Route element={<MainLayout/>}>
+                <Route path="/home" element={
                     <ProtectedRoute>
                         <Home/>
                     </ProtectedRoute>
@@ -34,7 +44,32 @@ const AppRoutes = () => {
                 }
                 />
 
-                
+                <Route 
+                path="/admin-dashboard"
+                element={
+                    <AdminRoutes>
+                        <Admin/>
+                    </AdminRoutes>
+                }
+                />
+                </Route>
+
+                <Route element={<FrontLayout/>}>
+                    <Route path="/" element={<Frontpage/>} />
+                </Route>
+
+                <Route
+                path="/admin"
+                element={
+                    <AdminRoutes>
+                    <AdminLayout />
+                    </AdminRoutes>
+                }
+                >
+                <Route index element={<AdminHome />} />
+                <Route path="products" element={<AdminProducts />} />
+                <Route path="orders" element={<AdminOrders />} />
+                </Route>
             </Routes>
 
             

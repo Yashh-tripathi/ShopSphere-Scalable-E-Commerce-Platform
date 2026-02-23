@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter',sans-serif;
+}
+
+.container{
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    height: 100vh;
+}
+
+.layout {
+    height: 100vh;
+    background-image: linear-gradient(to bottom, white , #dbeafe, white);
+}
+
+.navbar-root{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.links{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.links-items{
+    font-size: 14px;
+    text-decoration: none;
+    color: #525252;
+}
+
+.links-items:hover {
+    color: black;
+    transition: color 0.2s ease-out;
+}
+
+.btn {
+    all: unset;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 9px ;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 10px;
+    text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #2977f6;
+    transition: background 0.5s ease-out;
+}
+
+.hero-root {
+    padding: 60px 10px;
+}
+
+.badge {
+    font-size: 11.5px;
+    max-width: 280px;
+    border-radius: 50px;
+    background-color: #f5f5f5;
+    padding: 2px 18px;
+    width: fit-content;
+    margin: 0px auto;
+    border: 0.5px solid #e5e5e5;
+}
+
+.badge:hover{
+    background-color: #e5e5e5;
+    transition: background 0.5 ease-out;
+}
+
+.hero-title {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: -0.1px;
+    line-height: 1.2;
+    margin-top: 35px;
+    color: #2a2a2a;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: #595959;
+    justify-content: center;
+    width:fit-content;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.hero-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+
+.sec-btn {
+    margin-right: 8px;
+}
+
+.t-btn {
+    all: unset;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 9px ;
+    background-color: transparent;
+    color: black;
+    border-radius: 10px;
+    text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.t-btn:hover {
+    background-color: rgba(109, 106, 106, 0.123);
+    transition: background 0.2s ease-out;
+}
+
+
+.left-line {
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, #d4d4d4, #f5f5f5);
+    position: absolute;
+    left: -10px;
+}
+
+.right-line {
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, #d4d4d4, #f5f5f5);
+    position: absolute;
+    right: -10px;
+}
+
+.login {
+    border: 0.5px solid gray;
+    margin-top: 130px;
+    padding: 25px 40px;
+    border-radius: 30px;
+    box-shadow: 0px 14px 34px rgba(0, 0, 0, 0.3);
+}
+
+.login-form{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    margin-bottom: 10px;
+}
+
+.ib{
+    margin-bottom: 20px;
+    padding: 4px 6px;
+}
+
+.logb {
+    width: fit-content;
+}
