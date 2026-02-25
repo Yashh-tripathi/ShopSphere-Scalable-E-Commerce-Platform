@@ -1,6 +1,5 @@
 import { registerUser } from "@/api/auth.api"
 import { CardContainer } from "@/components/ui/3d-card"
-import { NoiseBackground } from "@/components/ui/noise-background"
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";

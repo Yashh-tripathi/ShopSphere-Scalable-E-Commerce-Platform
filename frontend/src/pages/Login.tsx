@@ -3,7 +3,6 @@ import { useAuthStore } from "../store/auth.store";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/auth.api";
 import { CardContainer } from "@/components/ui/3d-card";
-import { NoiseBackground } from "@/components/ui/noise-background";
 import toast from "react-hot-toast";
 import "../Frontpage.css";
 
